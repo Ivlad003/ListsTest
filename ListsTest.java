@@ -17,48 +17,34 @@ public class ListsTest {
             new Person(50, "Святополк"),
             new Person(2, "Баркадий")
     ));
+
+    private static final List<Person> personsOrigin = new ArrayList<>(Arrays.asList(
+            new Person(5, "Мухомор"),
+            new Person(6, "Доброжир "),
+            new Person(7, "Иркаил "),
+            new Person(8, "Серафим"),
+            new Person(9, "Агниил "),
+            new Person(15, "Мерилл "),
+            new Person(14, "Агафий "),
+            new Person(13, "Рёрик  "),
+            new Person(50, "Святополк"),
+            new Person(2, "Баркадий"),
+            new Person(1, "Аркадий")
+    ));
     private static final int[] ids = new int[]{10, 1, 12, 13, 14, 15};
 
     @Test
     public void equalsOldListPersonsWithNewPersonsSort() {
-        List<Person> persons = new ArrayList<>(Arrays.asList(
-                new Person(5, "Мухомор"),
-                new Person(6, "Доброжир "),
-                new Person(7, "Иркаил "),
-                new Person(8, "Серафим"),
-                new Person(9, "Агниил "),
-                new Person(15, "Мерилл "),
-                new Person(14, "Агафий "),
-                new Person(13, "Рёрик  "),
-                new Person(50, "Святополк"),
-                new Person(2, "Баркадий"),
-                new Person(1, "Аркадий")
-        ));
-
-        List oldSortPersons = new ArrayList<>(persons);
+        List persons = new ArrayList<>(personsOrigin);
+        List oldSortPersons = new ArrayList(persons);
         Person.order(persons, ids);
-
         Assert.assertNotEquals(oldSortPersons, persons);
     }
 
     @Test
     public void equalsTrueAfterSortPersonsWithNewPersonsSort() {
-        List<Person> persons = new ArrayList<>(Arrays.asList(
-                new Person(5, "Мухомор"),
-                new Person(6, "Доброжир "),
-                new Person(7, "Иркаил "),
-                new Person(8, "Серафим"),
-                new Person(9, "Агниил "),
-                new Person(15, "Мерилл "),
-                new Person(14, "Агафий "),
-                new Person(13, "Рёрик  "),
-                new Person(50, "Святополк"),
-                new Person(2, "Баркадий"),
-                new Person(1, "Аркадий")
-        ));
-
+        List persons = new ArrayList<>(personsOrigin);
         Person.order(persons, ids);
-
         Assert.assertEquals(persons, personsAfterSort);
     }
 }
